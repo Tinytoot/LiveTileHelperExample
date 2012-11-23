@@ -1,0 +1,88 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="LiveTileHelperExample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="EXAMPLE APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="live tile helper" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.RowSpan="5">
+                <TextBlock Text="Choose your tile:" Foreground="{StaticResource PhoneSubtleBrush}" />
+                <RadioButton x:Name="sunny" IsChecked="True" Checked="RadioButton_Checked_1">
+                    <RadioButton.Content>
+                        <Image Source="Images/sunny.png" Width="90" Height="90"/>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton x:Name="cloudy" Checked="RadioButton_Checked_1">
+                    <RadioButton.Content>
+                        <Image Source="Images/cloudy.png" Width="90" Height="90"/>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton x:Name="rainy" Checked="RadioButton_Checked_1">
+                    <RadioButton.Content>
+                        <Image Source="Images/rainy.png" Width="90" Height="90"/>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton x:Name="snowy" Checked="RadioButton_Checked_1">
+                    <RadioButton.Content>
+                        <Image Source="Images/snowy.png" Width="90" Height="90"/>
+                    </RadioButton.Content>
+                </RadioButton>
+            </StackPanel>
+            <telerikPrimitives:RadTextBox Header="City name" Grid.Column="1" x:Name="cityname" Text="San Francisco" />
+            <telerikPrimitives:RadTextBox Header="Temperature" Text="5" InputScope="Number" x:Name="temperature" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"/>
+
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="Your tile:" Foreground="{StaticResource PhoneSubtleBrush}"/>
+            <Grid x:Name="Tile" Grid.Column="1" Grid.Row="3" Width="173" Height="173">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <telerikPrimitives:RadCustomHubTile x:Name="radHubTile"/>
+                <!--<Image x:Name="selectedImage" Source="Images/sunny.png" Width="173" Height="173" />-->
+                <!--<TextBlock VerticalAlignment="Center" TextWrapping="Wrap" Foreground="Black" FontSize="22" Margin="12,0,12,0" Text="{Binding ElementName=cityname,Path=Text}" />
+                <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="60" Margin="12,6" Foreground="White" Text="{Binding ElementName=temperature,Path=Text}"/>-->
+            </Grid>
+
+            <StackPanel Margin="0,12" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBlock Text="pin to start" Foreground="{StaticResource PhoneSubtleBrush}" VerticalAlignment="Center" Margin="12,0"/>
+                <telerikPrimitives:RadImageButton ButtonShape="Ellipse" RestStateImageSource="Images/pin.png" BorderThickness="3" VerticalAlignment="Bottom" Tap="RadImageButton_Tap_1"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+ 
+</phone:PhoneApplicationPage>

@@ -1,0 +1,2 @@
+﻿This example demonstrates the Live Tile Helper, which allows users to add dynamic tiles with custom design and content based on the context of their applications.
+Tap "pin to start" to create a tile with the content, currently selected from the options below.
